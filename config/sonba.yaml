@@ -1,0 +1,71 @@
+MFVI:
+  hexa_rank: 150
+  hexa_std: 1
+  iterations: 3
+  normalize_weight: true
+  quad_rank: 150
+  quad_std: 1
+  tag_dim: 150
+  use_hexalinear: false
+  use_quadrilinear: false
+  use_second_order: false
+  use_third_order: false
+  window_size: 1
+ModelFinetuner:
+  distill_mode: false
+  sentence_level_batch: true
+anneal_factor: 2
+embeddings:
+  TransformerWordEmbeddings-0:
+    doc_batch_size: 2
+    fine_tune: true
+    layers: '-1'
+    model: dmis-lab/biobert-v1.1
+    pooling_operation: first
+interpolation: 0.5
+is_teacher_list: true
+model:
+  FastSequenceTagger:
+    crf_attention: false
+    dropout: 0.0
+    hidden_size: 256
+    locked_dropout: 0.0
+    remove_x: true
+    sentence_loss: true
+    use_cnn: false
+    use_crf: true
+    use_rnn: false
+    word_dropout: 0.1
+model_name: sonba
+ner:
+  ColumnCorpus-WNUT:
+    column_format:
+      0: text
+      1: ner
+    data_folder: /home/node2/Ba_NLP/CLNER/CLNER_datasets/wnut17
+    tag_to_bioes: ner
+  ColumnCorpus-WNUTDOCFULL:
+    column_format:
+      0: text
+      1: ner
+    data_folder: /home/node2/Ba_NLP/CLNER/CLNER_datasets/wnut17_bertscore_eos_doc_full
+    tag_to_bioes: ner
+  Corpus: ColumnCorpus-WNUTDOCFULL
+  tag_dictionary: resources/taggers/aug_wnut_ner_tags.pkl
+target_dir: resources/taggers/
+targets: ner
+teacher_annealing: false
+train:
+  embeddings_storage_mode: none
+  fine_tune_mode: true
+  gradient_accumulation_steps: 2
+  learning_rate: 5.0e-06
+  lr_rate: 10000
+  max_epochs: 10
+  mini_batch_size: 2
+  monitor_test: false
+  save_final_model: false
+  train_with_dev: false
+  true_reshuffle: false
+  use_warmup: false
+trainer: ModelFinetuner
