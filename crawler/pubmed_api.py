@@ -24,7 +24,7 @@ def excute_pubmed_api(base_url,api_key,db,retmax,query):
     keywords = [w for w in word_tokens if not w.lower() in stop_words]
     # Perform the ESearch request to get the WebEnv and QueryKey parameters
     esearch_url = f"{base_url}esearch.fcgi?db={db}&term={query}&sort=relevance&retmax={retmax}&usehistory=y&api_key={api_key}"
-    response = requests.get(esearch_url, timeout=10)
+    response = requests.get(esearch_url, timeout=20)
     esearch_xml = response.content.decode("utf-8")
     # Parse the WebEnv and QueryKey parameters from the ESearch response
     root = ET.fromstring(esearch_xml)
@@ -32,7 +32,7 @@ def excute_pubmed_api(base_url,api_key,db,retmax,query):
     query_key = root.find(".//QueryKey").text
     # Perform the EFetch request to retrieve the full records for the PubMed IDs
     efetch_url = f"{base_url}efetch.fcgi?db={db}&query_key={query_key}&WebEnv={webenv}&api_key={api_key}&retmax={retmax}&usehistory=y&retmode=xml"
-    response = requests.get(efetch_url, timeout=10)
+    response = requests.get(efetch_url, timeout=20)
     efetch_xml = response.content.decode("utf-8")
     # Parse the full records from the EFetch response
     root = ET.fromstring(efetch_xml)

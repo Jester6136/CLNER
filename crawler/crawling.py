@@ -14,31 +14,28 @@ source_file_path = r'datasets/MTL-Bioinformatics-2016/BC5CDR-chem-IOBES/test.tsv
 with open(source_file_path,'r') as f:
     text = f.read()
 
-folder_path =r'datasets/MTL-Bioinformatics-2016-external-contexts'
+folder_path =r'F:\ubuntu\CLNER\datasets\MTL-Bioinformatics-2016-external-contexts'
 folder_name = source_file_path.split('/')[-2]+'_eos_doc_full'
 
 fi_name = source_file_path.split('/')[-1]
 if fi_name.split('.')[0]=='devel':
-    fi_name = 'dev.'+source_file_path.split('/')[-1].split('.')[1] 
+    fi_name = 'dev.'+source_file_path.split('/')[-1].split('.')[1]
 
 # Combine the path and folder name into a single string
 new_folder = os.path.join(folder_path, folder_name)
 if not os.path.exists(new_folder):
     os.mkdir(new_folder)
 
-
-start = 1 
-
-sublists = text.strip().split('\n\n')[count-1:]
+count = 2021
+sublists = text.strip().split('\n\n')[count:]
 result = []
 queries = []
-count = 0
 non_exten_count = 0
-print("Nếu như request lỗi thì setting lại start bằng chính số log ra cuối cùng ở màn hình console! Nếu như có nhiều lần lỗi thì cộng tiếp vào")
+print("Nếu như request lỗi thì setting lại count bằng chính số log ra cuối cùng ở màn hình console!")
 for sublist in sublists:
     if sublist != '':
         count+=1
-        print(count)
+        print(count-1)
         tokens = sublist.split('\n')
         sublist_result = []
         text_ = ""
@@ -59,12 +56,6 @@ for sublist in sublists:
         with open(new_folder+"/"+fi_name,'a', encoding='utf-8') as f:
             f.write(to_file)
     time.sleep(0.16)
-
 print(non_exten_count)
-to_file = ""
-for sub_list in result:
-    to_file= to_file + ('\n'.join([t[0] + '\t' + t[1] for t in sub_list]) + '\n\n')
-with open(new_folder+"/"+fi_name+"_FULL",'a', encoding='utf-8') as f:
-    f.write(to_file)
 
-
+print("Extend Done!")
