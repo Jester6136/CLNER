@@ -1,6 +1,16 @@
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--file_path')
+args = parser.parse_args()
+if args.file_path:
+    print("===========================================")
+    print(f'Extend data for {args.file_path}')
+    print("===========================================")
+
 from crawler.pubmed_api import excute_pubmed_api
 import time
 import os
+import sys
 # Set the Entrez Utilities base URL
 base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
 my_api_key = "27af1ec10cd5d499b43225ebf7f669d90b09"
@@ -10,7 +20,7 @@ retmax = 20
 def add_BX_tag(lst_text):
     return [(item,'B-X') for item in lst_text]
 
-source_file_path = r'datasets/MTL-Bioinformatics-2016/BC5CDR-chem-IOBES/test.tsv'
+source_file_path = r'datasets/MTL-Bioinformatics-2016/'+args.file_path
 with open(source_file_path,'r') as f:
     text = f.read()
 
@@ -26,7 +36,7 @@ new_folder = os.path.join(folder_path, folder_name)
 if not os.path.exists(new_folder):
     os.mkdir(new_folder)
 
-count = 2021
+count = 2416
 sublists = text.strip().split('\n\n')[count:]
 result = []
 queries = []
