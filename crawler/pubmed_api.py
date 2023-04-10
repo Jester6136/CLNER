@@ -6,6 +6,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import string
 nltk.download('punkt')
+nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
 
 def find_sentences_with_keywords(keywords, sentences):
@@ -57,7 +58,6 @@ def excute_pubmed_api(base_url,api_key,db,retmax,query):
             external_contexts.append(title)
         if len(external_contexts)>5:
             break
-    
     return word_tokenize(" ".join(external_contexts))
 
 

@@ -1,6 +1,7 @@
 import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('--file_path')
+parser.add_argument('--count')
 args = parser.parse_args()
 if args.file_path:
     print("===========================================")
@@ -24,7 +25,7 @@ source_file_path = r'datasets/MTL-Bioinformatics-2016/'+args.file_path
 with open(source_file_path,'r') as f:
     text = f.read()
 
-folder_path =r'F:\ubuntu\CLNER\datasets\MTL-Bioinformatics-2016-external-contexts'
+folder_path =r'datasets/MTL-Bioinformatics-2016-external-contexts'
 folder_name = source_file_path.split('/')[-2]+'_eos_doc_full'
 
 fi_name = source_file_path.split('/')[-1]
@@ -36,7 +37,7 @@ new_folder = os.path.join(folder_path, folder_name)
 if not os.path.exists(new_folder):
     os.mkdir(new_folder)
 
-count = 0
+count = args.count
 sublists = text.strip().split('\n\n')[count:]
 result = []
 queries = []
