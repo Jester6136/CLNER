@@ -37,7 +37,7 @@ new_folder = os.path.join(folder_path, folder_name)
 if not os.path.exists(new_folder):
     os.mkdir(new_folder)
 
-count = args.count
+count = int(args.count)
 sublists = text.strip().split('\n\n')[count:]
 result = []
 queries = []
