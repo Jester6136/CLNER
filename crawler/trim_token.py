@@ -28,6 +28,6 @@ for (_, _, filenames) in walk(source_file_path):
             tokens_block.append(new_text)
         new_text = '\n\n'.join(tokens_block)
         print(count)
-        with open(os.path.join('datasets\Test',file_name),'w',encoding='utf8') as f:
+        with open(os.path.join(source_file_path,file_name),'w',encoding='utf8') as f:
             f.write(new_text)
 
