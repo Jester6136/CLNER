@@ -39,7 +39,6 @@ if not os.path.exists(new_folder):
 
 count = int(args.count)
 sublists = text.strip().split('\n\n')[count:]
-sys.exit("Error message")
 result = []
 queries = []
 non_exten_count = 0
