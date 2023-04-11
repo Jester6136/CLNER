@@ -20,7 +20,7 @@ embeddings:
     doc_batch_size: 2
     fine_tune: true
     layers: '-1'
-    model: dmis-lab/biobert-v1.1
+    model: microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext
     pooling_operation: first
 interpolation: 0.5
 is_teacher_list: true
@@ -36,22 +36,22 @@ model:
     use_crf: true
     use_rnn: false
     word_dropout: 0.1
-model_name: sonba
+model_name: bc5cdr_chem
 ner:
-  ColumnCorpus-WNUT:
+  ColumnCorpus-BC5CDRDISEASE:
     column_format:
       0: text
       1: ner
-    data_folder: /home/node2/Ba_NLP/CLNER/CLNER_datasets/wnut17
+    data_folder: /content/drive/MyDrive/Thu_nghiem/Giang_Son_Ba/CLNER/datasets/MTL-Bioinformatics-2016-external-contexts/BC5CDR-disease-IOB_eos_doc_full
     tag_to_bioes: ner
-  ColumnCorpus-WNUTDOCFULL:
+  ColumnCorpus-BC5CDRCHEM:
     column_format:
       0: text
       1: ner
-    data_folder: /home/node2/Ba_NLP/CLNER/CLNER_datasets/wnut17_bertscore_eos_doc_full
+    data_folder: /content/drive/MyDrive/Thu_nghiem/Giang_Son_Ba/CLNER/datasets/MTL-Bioinformatics-2016-external-contexts/BC5CDR-chem-IOB_eos_doc_full
     tag_to_bioes: ner
-  Corpus: ColumnCorpus-WNUTDOCFULL
-  tag_dictionary: resources/taggers/aug_wnut_ner_tags.pkl
+  Corpus: ColumnCorpus-BC5CDRCHEM
+  tag_dictionary: resources/taggers/aug_bc5cdrchem_ner_tags.pkl
 target_dir: resources/taggers/
 targets: ner
 teacher_annealing: false
