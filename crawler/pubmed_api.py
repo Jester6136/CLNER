@@ -29,35 +29,38 @@ def excute_pubmed_api(base_url,api_key,db,retmax,query):
     esearch_xml = response.content.decode("utf-8")
     # Parse the WebEnv and QueryKey parameters from the ESearch response
     root = ET.fromstring(esearch_xml)
-    webenv = root.find(".//WebEnv").text
-    query_key = root.find(".//QueryKey").text
-    # Perform the EFetch request to retrieve the full records for the PubMed IDs
-    efetch_url = f"{base_url}efetch.fcgi?db={db}&query_key={query_key}&WebEnv={webenv}&api_key={api_key}&retmax={retmax}&usehistory=y&retmode=xml"
-    response = requests.get(efetch_url, timeout=20)
-    efetch_xml = response.content.decode("utf-8")
-    # Parse the full records from the EFetch response
-    root = ET.fromstring(efetch_xml)
-    external_contexts = []
-    for pubmed_article in root.findall(".//PubmedArticle"):
-        # Get the title from the full record
-        title = pubmed_article.find(".//ArticleTitle").text
-        # Get the description (abstract) from the full record, if available
-        description_elem = pubmed_article.find(".//AbstractText")
-        if description_elem is not None:
-            if description_elem.text is not None:
-                description = description_elem.text
-                copy_description = description
-                copy_description_segmented = sent_tokenize(copy_description)
-                description_segmented = sent_tokenize(description)
-                result = find_sentences_with_keywords(keywords, copy_description_segmented)
-                for item in result:
-                    external_contexts.append(description_segmented[item])
+    if root.find(".//WebEnv") is None:
+        external_contexts = []
+    else:
+        webenv = root.find(".//WebEnv").text
+        query_key = root.find(".//QueryKey").text
+        # Perform the EFetch request to retrieve the full records for the PubMed IDs
+        efetch_url = f"{base_url}efetch.fcgi?db={db}&query_key={query_key}&WebEnv={webenv}&api_key={api_key}&retmax={retmax}&usehistory=y&retmode=xml"
+        response = requests.get(efetch_url, timeout=20)
+        efetch_xml = response.content.decode("utf-8")
+        # Parse the full records from the EFetch response
+        root = ET.fromstring(efetch_xml)
+        external_contexts = []
+        for pubmed_article in root.findall(".//PubmedArticle"):
+            # Get the title from the full record
+            title = pubmed_article.find(".//ArticleTitle").text
+            # Get the description (abstract) from the full record, if available
+            description_elem = pubmed_article.find(".//AbstractText")
+            if description_elem is not None:
+                if description_elem.text is not None:
+                    description = description_elem.text
+                    copy_description = description
+                    copy_description_segmented = sent_tokenize(copy_description)
+                    description_segmented = sent_tokenize(description)
+                    result = find_sentences_with_keywords(keywords, copy_description_segmented)
+                    for item in result:
+                        external_contexts.append(description_segmented[item])
+                else:
+                    external_contexts.append(title)
             else:
                 external_contexts.append(title)
-        else:
-            external_contexts.append(title)
-        if len(external_contexts)>5:
-            break
+            if len(external_contexts)>5:
+                break
     return word_tokenize(" ".join(external_contexts))
 
 

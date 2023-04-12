@@ -62,7 +62,6 @@ for sublist in sublists:
             external_context = add_BX_tag(['<EOS>']+external_tokens)
             sublist_result.extend(external_context)
             result.append(sublist_result)
-
         to_file= ('\n'.join([t[0] + '\t' + t[1] for t in sublist_result]) + '\n\n')
         with open(new_folder+"/"+fi_name,'a', encoding='utf-8') as f:
             f.write(to_file)
