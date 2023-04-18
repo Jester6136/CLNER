@@ -59,7 +59,7 @@ def excute_pubmed_api(base_url,api_key,db,retmax,query):
                     external_contexts.append(title)
             else:
                 external_contexts.append(title)
-            if len(external_contexts)>5:
+            if len(external_contexts)>3:
                 break
     return word_tokenize(" ".join(external_contexts))
 

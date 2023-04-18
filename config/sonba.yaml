@@ -38,20 +38,176 @@ model:
     word_dropout: 0.1
 model_name: bc5cdr_chem
 ner:
-  ColumnCorpus-BC5CDRDISEASE:
+  ColumnCorpus-AnatEM:
     column_format:
       0: text
       1: ner
-    data_folder: /content/drive/MyDrive/Thu_nghiem/Giang_Son_Ba/CLNER/datasets/MTL-Bioinformatics-2016-external-contexts/BC5CDR-disease-IOB_eos_doc_full
+    data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/AnatEM-IOB
     tag_to_bioes: ner
-  ColumnCorpus-BC5CDRCHEM:
-    column_format:
-      0: text
-      1: ner
-    data_folder: /content/drive/MyDrive/Thu_nghiem/Giang_Son_Ba/CLNER/datasets/MTL-Bioinformatics-2016-external-contexts/BC5CDR-chem-IOB_eos_doc_full
-    tag_to_bioes: ner
-  Corpus: ColumnCorpus-BC5CDRCHEM
-  tag_dictionary: resources/taggers/aug_bc5cdrchem_ner_tags.pkl
+  ColumnCorpus-BC5CDRchem:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BC5CDR-chem-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BC5CDRdisease:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BC5CDR-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP09:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP09-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP11EPI:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP11EPI-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP11IDchem:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP11ID-chem-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP11IDggp:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP11ID-ggp-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP11ID:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP11ID-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP11ID-species:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP11ID-species-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13CGcc:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13CG-cc-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13CGcell:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13CG-cell-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13CGchem:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13CG-chem-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13CGggp:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13CG-ggp-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13CG:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13CG-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13CGspecies:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13CG-species-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13GE:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13GE-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13PCcc:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13PC-cc-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13PCchem:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13PC-chem-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13PCggp:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13PC-ggp-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-BioNLP13PC:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/BioNLP13PC-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-CRAFTcc:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/CRAFT-cc-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-CRAFTcell:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/CRAFT-cell-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-CRAFTchem:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/CRAFT-chem-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-CRAFTggp:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/CRAFT-ggp-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-CRAFT:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/CRAFT-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-CRAFTspecies:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/CRAFT-species-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-ExPTM:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/Ex-PTM-IOB
+      tag_to_bioes: ner
+  ColumnCorpus-linnaeus:
+      column_format:
+        0: text
+        1: ner
+      data_folder: /content/drive/MyDrive/CLNER/datasets/MTL-Bioinformatics-2016/linnaeus-IOB
+      tag_to_bioes: ner
+  Corpus: ColumnCorpus-AnatEM
+  tag_dictionary: resources/taggers/aug_AnatEM_ner_tags.pkl
 target_dir: resources/taggers/
 targets: ner
 teacher_annealing: false
