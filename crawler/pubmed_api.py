@@ -56,9 +56,11 @@ def excute_pubmed_api(base_url,api_key,db,retmax,query):
                     for item in result:
                         external_contexts.append(description_segmented[item])
                 else:
-                    external_contexts.append(title)
+                    if title is not None:
+                        external_contexts.append(title)
             else:
-                external_contexts.append(title)
+                if title is not None:
+                    external_contexts.append(title)
             if len(external_contexts)>3:
                 break
     return word_tokenize(" ".join(external_contexts))
