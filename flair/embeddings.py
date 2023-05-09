@@ -2935,6 +2935,7 @@ class TransformerWordEmbeddings(TokenEmbeddings):
         self.allow_long_sentences = allow_long_sentences
         if not hasattr(self.tokenizer,'model_max_length'):
             self.tokenizer.model_max_length = 512
+        self.tokenizer.model_max_length = 512
         if allow_long_sentences:
             self.max_subtokens_sequence_length = self.tokenizer.model_max_length
             self.stride = self.tokenizer.model_max_length//2

@@ -2861,7 +2861,16 @@ class TransformerWordEmbeddings(TokenEmbeddings):
         else:
             self.max_subtokens_sequence_length = self.tokenizer.model_max_length
             self.stride = 0
-
+        print(self.max_subtokens_sequence_length)
+        print(self.max_subtokens_sequence_length)
+        print(self.max_subtokens_sequence_length)
+        print(self.max_subtokens_sequence_length)
+        print(self.max_subtokens_sequence_length)
+        print(self.max_subtokens_sequence_length)
+        print(self.max_subtokens_sequence_length)
+        print(self.max_subtokens_sequence_length)
+        print(self.max_subtokens_sequence_length)
+        print(self.max_subtokens_sequence_length)
         # model name
         # self.name = 'transformer-word-' + str(model)
         if embedding_name is None:

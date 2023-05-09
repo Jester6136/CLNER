@@ -64,13 +64,3 @@ def excute_pubmed_api(base_url,api_key,db,retmax,query):
             if len(external_contexts)>3:
                 break
     return word_tokenize(" ".join(external_contexts))
-
-
-# if __name__=='__main__':
-#     base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
-#     my_api_key = "27af1ec10cd5d499b43225ebf7f669d90b09"
-#     # Set the query parameters
-#     db = "pubmed"
-#     retmax = 20
-#     query = str("""We think that a prospective study would be useful .""")
-#     print(excute_pubmed_api(base_url=base_url,api_key=my_api_key,db=db,retmax=retmax,query=query))
